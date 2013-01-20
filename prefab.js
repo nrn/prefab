@@ -3,19 +3,17 @@ var fs = require('fs')
   , exec = require('child_process').exec
   // Dependencies
   , es = require('event-stream')
-
-exec('git config -l', function (e, stuff) {
-  var opts =
-    { author: stuff.match(/user\.name=(.+)/)[1] + ' <' + stuff.match(/user\.email=(.+)/)[1] + '>'
-    , name: process.argv[2]
-    , year: 2013
-    }
+  , opts = { name: process.argv[2] }
   , dir = path.join(process.cwd(), opts.name)
 
-  if (!opts.name) {
-    console.log("Must provide a project name!")
-    process.exit()
-  }
+if (!opts.name) {
+  console.log("Must provide a project name!")
+  process.exit()
+}
+
+exec('git config -l', function (e, stuff) {
+  opts.author = stuff.match(/user\.name=(.+)/)[1] + ' <' + stuff.match(/user\.email=(.+)/)[1] + '>'
+  opts.year = 2013
 
   var dirs =
     [ dir
