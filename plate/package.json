@@ -1,7 +1,11 @@
 { "name": "#{name}#"
 , "version": "0.0.1"
-, "main": "#{name}#.js"
-, "scripts": { "test": "for f in ./t/*.js; do node $f; done" }
+, "main": "server.js"
+, "author": "#{author}#"
+, "scripts":
+  { "test": "for f in ./t/*.js; do node $f; done"
+  , "start": "node bin/cli.js"
+  }
 , "devDependencies": { "tape": "*" }
 , "engines": { "node": ">0.6" }
 , "repository":

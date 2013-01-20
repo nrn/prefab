@@ -4,23 +4,30 @@ var fs = require('fs')
   // Dependencies
   , es = require('event-stream')
 
-
 exec('git config -l', function (e, stuff) {
   var opts =
-    { author: stuff.match(/user\.name=(.+)/)[1]
-    , email: stuff.match(/user\.email=(.+)/)[1]
+    { author: stuff.match(/user\.name=(.+)/)[1] + ' <' + stuff.match(/user\.email=(.+)/)[1] + '>'
     , name: process.argv[2]
+    , year: 2013
     }
+  , dir = path.join(process.cwd(), opts.name)
 
   if (!opts.name) {
     console.log("Must provide a project name!")
     process.exit()
   }
 
-  fs.createReadStream(path.join(__dirname, 'plate', 'package.json'))
-    .pipe(replacer(opts))
-    .pipe(fs.createWriteStream(path.join(__dirname, 'tmp.json')))
+  fs.mkdir(dir, function (e) {
+    if (e) throw e
 
+    ;[ 'package.json'
+    , 'LICENSE'
+    ].forEach(function (file) {
+      fs.createReadStream(path.join(__dirname, 'plate', file))
+        .pipe(replacer(opts))
+        .pipe(fs.createWriteStream(path.join(dir, file)))
+    })
+  })
 })
 
 function replacer (opts) {
