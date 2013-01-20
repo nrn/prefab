@@ -28,6 +28,7 @@ exec('git config -l', function (e, stuff) {
     if (e) throw e
 
     ;[ 'package.json'
+    , 'readme.md'
     , 'LICENSE'
     , '.gitignore'
     , 'bin/cli.js'
