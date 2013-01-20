@@ -6,7 +6,7 @@ var cc = require('config-chain')
 var config = cc( argv
   , argv.config
   , cc.find('config.json')
-  , cc.env('{{name}}_')
+  , cc.env('#{name}#_')
   , { p: 3333
     }
   )

@@ -1,9 +1,10 @@
 { "name": "prefab"
-, "version": "0.0.1"
+, "version": "0.0.2"
 , "author": "Nick Niemeir <nick.niemeir@gmail.com> (http://nrn.io)"
 , "description": "Prefab a new project."
 , "keywords": [ "boilerplate" ]
 , "main": "prefab.js"
+, "bin": "./prefab.js"
 , "scripts": { "test": "for f in ./t/*.js; do node $f; done" }
 , "dependencies": { "event-stream": "*" }
 , "devDependencies": { "tape": "*" }

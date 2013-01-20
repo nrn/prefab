@@ -30,6 +30,7 @@ exec('git config -l', function (e, stuff) {
     ;[ 'package.json'
     , 'readme.md'
     , 'LICENSE'
+    , 'server.js'
     , '.gitignore'
     , 'bin/cli.js'
     ].forEach(function (file) {
