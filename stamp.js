@@ -17,17 +17,34 @@ exec('git config -l', function (e, stuff) {
     process.exit()
   }
 
-  fs.mkdir(dir, function (e) {
+  var dirs =
+    [ dir
+    , path.join(dir, 't')
+    , path.join(dir, 'bin')
+    , path.join(dir, 'public')
+    ]
+
+  mkdirs(dirs, function (e) {
     if (e) throw e
 
     ;[ 'package.json'
     , 'LICENSE'
+    , '.gitignore'
+    , 'bin/cli.js'
     ].forEach(function (file) {
       fs.createReadStream(path.join(__dirname, 'plate', file))
         .pipe(replacer(opts))
         .pipe(fs.createWriteStream(path.join(dir, file)))
     })
   })
+
+  function mkdirs (dirs, cb) {
+    if (!dirs.length >= 1) return cb(null)
+    fs.mkdir(dirs.shift(), function (e) {
+      if (e) return cb(e)
+      mkdirs(dirs, cb)
+    })
+  }
 })
 
 function replacer (opts) {
