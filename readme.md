@@ -1,10 +1,10 @@
-# Stamp
+# Prefab
 
-Stamp generates new projects, all it needs is a name.
+Prefab generates new projects, all it needs is a name.
 
 ```bash
-  npm install -g stamp
-  stamp <projectName>
+  npm install -g prefab
+  prefab <projectName>
 ```
 
 Will create a new project, in the ./projectName directory.

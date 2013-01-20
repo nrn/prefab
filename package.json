@@ -1,12 +1,15 @@
-{ "name": "stamp"
+{ "name": "prefab"
 , "version": "0.0.1"
-, "main": "stamp.js"
+, "author": "Nick Niemeir <nick.niemeir@gmail.com> (http://nrn.io)"
+, "description": "Prefab a new project."
+, "keywords": [ "boilerplate" ]
+, "main": "prefab.js"
 , "scripts": { "test": "for f in ./t/*.js; do node $f; done" }
 , "dependencies": { "event-stream": "*" }
 , "devDependencies": { "tape": "*" }
 , "engines": { "node": ">0.6" }
 , "repository":
   { "type": "git"
-  , "url": "git://github.com/nrn/stamp.git"
+  , "url": "git://github.com/nrn/prefab.git"
   }
 }
