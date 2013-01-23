@@ -52,6 +52,7 @@ exec('git config -l', function (e, stuff) {
     , 'server.js'
     , '.gitignore'
     , 'bin/cli.js'
+    , 'public/client.js'
     ].forEach(function (file) {
       console.log('Copying over ' + file)
       fs.createReadStream(path.join(__dirname, 'plate', file))

@@ -12,6 +12,8 @@
   , "ramrod": "*"
   , "config-chain": "*"
   , "optimist": "*"
+  , "flates": "*"
+  , "browserify": "*"
   }
 , "devDependencies": { "tape": "*" }
 , "engines": { "node": ">0.6" }
