@@ -19,6 +19,11 @@ function server (opts) {
 
   b.addEntry(__dirname + '/public/client.js')
 
+  var client = b.bundle()
+  b.on('bundle', function () {
+    client = b.bundle()
+  })
+
   router.on('', function (req, res) {
     res.statusCode = 200
     var scripts =
@@ -34,7 +39,7 @@ function server (opts) {
   router.on('client.js', function (req, res) {
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/javascript')
-    res.write(b.bundle())
+    res.write(client)
     res.end()
   })
 

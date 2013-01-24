@@ -7,10 +7,13 @@ Prefab generates new projects, all it needs is a name.
   prefab <projectName>
 ```
 
-Will create a new project, in the ./projectName directory.
+Prefab creates a new project, in the ./projectName directory.
 It will fill in author information from your git config,
 and plug the project name in appropriate places.
 
+It also adds common dependencies to your package.json
+and downloads common client side dependencies from
+the internet.
 
 Copyright 2013 Nick Niemeir <nick.niemeir@gmail.com>
 
