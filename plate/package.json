@@ -14,9 +14,20 @@
   , "optimist": "*"
   , "flates": "*"
   , "browserify": "*"
+  , "single-page": "*"
   }
 , "devDependencies": { "tape": "*" }
 , "engines": { "node": ">0.6" }
+, "testling":
+  { "files": [ "t/client/*.js" ]
+  , "browsers":
+    { "chrome": [ "23", "canary" ]
+    , "firefox": [ "17", "nightly" ]
+    , "safari": [ "5.1" ]
+    , "ie": [ "10" ]
+    , "opera": [ "12", "next" ]
+    }
+  }
 , "repository":
   { "type": "git"
   , "url": "git://github.com/nrn/#{name}#.git"

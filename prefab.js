@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var fs = require('fs')
   , path = require('path')
   , exec = require('child_process').exec
@@ -21,8 +23,11 @@ exec('git config -l', function (e, stuff) {
   var dirs =
     [ dir
     , path.join(dir, 't')
+    , path.join(dir, 't', 'client')
+    , path.join(dir, 't', 'server')
     , path.join(dir, 'bin')
     , path.join(dir, 'public')
+    , path.join(dir, 'public', 'routes')
     , dep
     ]
 
@@ -53,6 +58,9 @@ exec('git config -l', function (e, stuff) {
     , '.gitignore'
     , 'bin/cli.js'
     , 'public/client.js'
+    , 't/client/client.js'
+    , 't/server/server.js'
+    , 'public/routes/index.js'
     ].forEach(function (file) {
       console.log('Copying over ' + file)
       fs.createReadStream(path.join(__dirname, 'plate', file))

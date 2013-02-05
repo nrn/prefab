@@ -5,6 +5,7 @@ var http = require('http')
   , ecstatic = require('ecstatic')
   , ramrod = require('ramrod')
   , browserify = require('browserify')
+  , index = require('./public/routes/index')
 
 module.exports = server
 
@@ -26,13 +27,7 @@ function server (opts) {
 
   router.on('', function (req, res) {
     res.statusCode = 200
-    var scripts =
-      [ '/dep/jquery.min.js'
-      , '/client.js'
-      ]
-    res.write(f.d() + scripts.map(function (script) {
-      return f.script({ src: script })
-    }).join(''))
+    res.write(index())
     res.end()
   })
 
@@ -52,3 +47,4 @@ function server (opts) {
 
   return app
 }
+
