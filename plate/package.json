@@ -2,10 +2,10 @@
 , "version": "0.0.1"
 , "author": "#{author}#"
 , "main": "server.js"
-, "bin": "./bin/cli.js"
+, "bin": "./cli.js"
 , "scripts":
   { "test": "for f in ./t/*.js; do node $f; done"
-  , "start": "node bin/cli.js"
+  , "start": "node cli.js"
   }
 , "dependencies":
   { "ecstatic": "*"
