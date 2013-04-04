@@ -25,7 +25,6 @@ exec('git config -l', function (e, stuff) {
     , path.join(dir, 't')
     , path.join(dir, 't', 'client')
     , path.join(dir, 't', 'server')
-    , path.join(dir, 'bin')
     , path.join(dir, 'public')
     , path.join(dir, 'public', 'routes')
     , dep
@@ -56,7 +55,7 @@ exec('git config -l', function (e, stuff) {
     , 'LICENSE'
     , 'server.js'
     , '.gitignore'
-    , 'bin/cli.js'
+    , 'cli.js'
     , 'public/client.js'
     , 't/client/client.js'
     , 't/server/server.js'

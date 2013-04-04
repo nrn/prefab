@@ -1,5 +1,6 @@
 #!/usr/local/bin/node
-var cc = require('config-chain')
+var cluster = require('cluster')
+  , cc = require('config-chain')
   , argv = require('optimist').argv
   , server = require('./server')
 
@@ -12,5 +13,19 @@ var config = cc( argv
     }
   )
 
-server(config.store)
+if (cluster.isMaster) {
+  cluster.on('disconnect', function () {
+    console.error('disconnect')
+    cluster.fork()
+  })
+
+  require('os').cpus().forEach(function () {
+    cluster.fork()
+  })
+
+} else {
+
+  server(config.store)
+
+}
 

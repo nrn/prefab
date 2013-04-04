@@ -16,14 +16,7 @@ function server (opts) {
       }
     , router = ramrod(routes)
     , app = http.createServer(router.dispatch.bind(router))
-    , b = browserify({ watch: true, debug: true, exports: ['require', 'process']})
-
-  b.addEntry(__dirname + '/public/client.js')
-
-  var client = b.bundle()
-  b.on('bundle', function () {
-    client = b.bundle()
-  })
+    , b = browserify(__dirname + '/public/client.js')
 
   router.on('', function (req, res) {
     res.statusCode = 200
@@ -34,8 +27,7 @@ function server (opts) {
   router.on('client.js', function (req, res) {
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/javascript')
-    res.write(client)
-    res.end()
+    b.bundle({ insertGlobals: true, debug: true }).pipe(res)
   })
 
   router.on('*', ecstatic(__dirname + '/public'))
