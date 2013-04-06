@@ -9,6 +9,8 @@
 , "dependencies":
   { "event-stream": "*"
   , "request": "*"
+  , "glob": "*"
+  , "fstream": "*"
   }
 , "devDependencies": { "tape": "*" }
 , "engines": { "node": ">0.8" }
