@@ -10,31 +10,30 @@ var fs = require('fs')
   , glob = require('glob')
   , fstream = require('fstream')
   // Other top level vars
-  , opts = { name: process.argv[2] }
+  , opts = { name: process.argv[2], year: 2013 }
   , dir = path.join(process.cwd(), opts.name)
 
-if (!opts.name) {
-  console.log("Must provide a project name!")
-  process.exit()
+if (typeof opts.name !== 'string') {
+  throw new Error("Must provide a project name!")
 }
 
 exec('git config -l', function (e, stuff) {
   opts.author = stuff.match(/user\.name=(.+)/)[1] + ' <' + stuff.match(/user\.email=(.+)/)[1] + '>'
-  opts.year = 2013
 
   var dep = path.join(dir, 'public', 'dep')
   var src =  path.join(__dirname, 'plate')
-  var template = Object.keys(opts).map(function (key) {
-     return new RegExp('#{' + key + '}#', 'g')
-  })
+  var template = function (str) {
+    return Object.keys(opts).reduce(function (item, key) {
+      return item.replace(new RegExp('#{' + key + '}#', 'g'), opts[key])
+    }, str)
+  }
   glob(path.join(src, '**'), function (e, files) {
+    console.log(files)
     files.forEach(function (file) {
       console.log('Copying over ' + file)
       var replacer = new stream.Transform
       replacer._transform = function (data, enc, cb) {
-        cb(null, template.reduce(function (item, regex) {
-          return new Buffer(item.toString().replace(item))
-        }, data))
+        cb(null, new Buffer(template(data.toString()), enc))
       }
       fstream.Reader(file)
         .pipe(replacer)
