@@ -4,6 +4,7 @@ var fs = require('fs')
   , path = require('path')
   , exec = require('child_process').exec
   , stream = require('stream')
+  , domain = require('domain')
   // Dependencies
   , es = require('event-stream')
   , request = require('request')
@@ -12,12 +13,17 @@ var fs = require('fs')
   // Other top level vars
   , opts = { name: process.argv[2], year: 2013 }
   , dir = path.join(process.cwd(), opts.name)
+  , d = domain.create()
+
+d.on('error', function (e) {
+  if (e.code !== 'EISDIR') console.log(e)
+})
 
 if (typeof opts.name !== 'string') {
   throw new Error("Must provide a project name!")
 }
 
-exec('git config -l', function (e, stuff) {
+exec('git config -l', d.intercept(function (stuff) {
   opts.author = stuff.match(/user\.name=(.+)/)[1] + ' <' + stuff.match(/user\.email=(.+)/)[1] + '>'
 
   var dep = path.join(dir, 'public', 'dep')
@@ -28,7 +34,6 @@ exec('git config -l', function (e, stuff) {
     }, str)
   }
   glob(path.join(src, '**'), function (e, files) {
-    console.log(files)
     files.forEach(function (file) {
       console.log('Copying over ' + file)
       var replacer = new stream.Transform
@@ -56,5 +61,5 @@ exec('git config -l', function (e, stuff) {
 
   })
 
-})
+}))
 
