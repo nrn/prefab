@@ -1,7 +1,6 @@
 { "name": "#{name}#"
 , "version": "0.0.1"
 , "author": "#{author}#"
-, "main": "server.js"
 , "bin": "./cli.js"
 , "scripts":
   { "test": "for f in ./t/*.js; do node $f; done"
