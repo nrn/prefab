@@ -25,7 +25,8 @@ if (typeof opts.name !== 'string') {
 
 exec('git config -l', d.intercept(function (stuff) {
   opts.author = stuff.match(/user\.name=(.+)/)[1] + ' <' + stuff.match(/user\.email=(.+)/)[1] + '>'
-
+  opts.gh_author = stuff.match(/github\.user=(.+)/)[1]
+   
   var dep = path.join(dir, 'public', 'dep')
   var src =  path.join(__dirname, 'plate')
   var template = function (str) {
