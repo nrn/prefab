@@ -29,6 +29,6 @@
   }
 , "repository":
   { "type": "git"
-  , "url": "git://github.com/nrn/#{name}#.git"
+  , "url": "git://github.com/#{gh_author}#/#{name}#.git"
   }
 }
