@@ -45,10 +45,7 @@ exec('git config -l', d.intercept(function (stuff) {
         .pipe(replacer)
         .pipe(fstream.Writer(path.join(dir, path.relative(src, file))))
     })
-    ;[ 'http://code.jquery.com/jquery.min.js'
-    , 'http://backbonejs.org/backbone-min.js'
-    , 'http://hay.github.com/stapes/stapes.min.js'
-    , 'http://underscorejs.org/underscore-min.js'
+    ;[ 'http://yui.yahooapis.com/pure/0.3.0/pure-min.css'
     ].forEach(function (url) {
       var req = request(url)
       req.pipe(fstream.Writer(path.join(dep, url.split('/').pop())))

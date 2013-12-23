@@ -5,6 +5,8 @@
 , "scripts":
   { "test": "for f in ./t/*.js; do node $f; done"
   , "start": "node cli.js"
+  , "build": "gulp"
+  , "watch": "gulp watch"
   }
 , "dependencies":
   { "ecstatic": "*"
@@ -13,7 +15,14 @@
   , "optimist": "*"
   , "flates": "*"
   , "browserify": "*"
-  , "single-page": "*"
+  , "react": "*"
+  , "backbone": "*"
+  , "lodash": "*"
+  , "human-model": "*"
+  , "d3": "*"
+  , "gulp": "*"
+  , "gulp-browserify": "*"
+  , "gulp-concat": "*"
   }
 , "devDependencies": { "tape": "*" }
 , "engines": { "node": ">0.6" }
