@@ -11,7 +11,7 @@ var fs = require('fs')
   , glob = require('glob')
   , fstream = require('fstream')
   // Other top level vars
-  , opts = { name: process.argv[2], year: 2013 }
+  , opts = { name: process.argv[2], year: new Date().getFullYear()}
   , dir = path.join(process.cwd(), opts.name)
   , d = domain.create()
 
