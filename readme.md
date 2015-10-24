@@ -15,6 +15,6 @@ It also adds common dependencies to your package.json
 and downloads common client side dependencies from
 the internet.
 
-Copyright 2013-2014 Nick Niemeir <nick.niemeir@gmail.com>
+Copyright 2013-2015 Nick Niemeir <nick.niemeir@gmail.com>
 
 License: MIT

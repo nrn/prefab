@@ -1,23 +1,11 @@
-// server.js
-var http = require('http')
-  // from npm
-  , ecstatic = require('ecstatic')
-  , ramrod = require('ramrod')
+var react = require('react')
+var d = require('jsnox')(react)
+var domready = require('domready')
+var state = require('./state')
 
-module.exports = server
+domready(start)
 
-function server (opts) {
-  var routes = {}
-    , router = ramrod(routes)
-    , app = http.createServer(router.dispatch.bind(router))
-
-  router.on('*', ecstatic(__dirname + '/public'))
-
-  app.listen(opts.p, function (e) {
-    if (e) throw e
-    console.log('Listening on: ' + opts.p)
-  })
-
-  return app
+function start () {
+  
 }
 

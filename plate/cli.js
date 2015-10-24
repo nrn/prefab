@@ -2,7 +2,7 @@
 var cluster = require('cluster')
   , cc = require('config-chain')
   , argv = require('optimist').argv
-  , server = require('./index')
+  , server = require('./server')
 
 var config = cc( argv
   , argv.config

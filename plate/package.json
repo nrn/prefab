@@ -1,43 +1,50 @@
-{ "name": "#{name}#"
-, "version": "0.0.1"
-, "author": "#{author}#"
-, "bin": "./cli.js"
-, "scripts":
-  { "test": "for f in ./t/*.js; do node $f; done"
-  , "start": "node cli.js"
-  , "build": "gulp"
-  , "watch": "gulp watch"
-  }
-, "dependencies":
-  { "ecstatic": "*"
-  , "ramrod": "*"
-  , "config-chain": "*"
-  , "optimist": "*"
-  , "flates": "*"
-  , "browserify": "*"
-  , "react": "*"
-  , "backbone": "*"
-  , "lodash": "*"
-  , "human-model": "*"
-  , "d3": "*"
-  , "gulp": "*"
-  , "gulp-browserify": "*"
-  , "gulp-concat": "*"
-  }
-, "devDependencies": { "tape": "*" }
-, "engines": { "node": ">0.6" }
-, "testling":
-  { "files": [ "t/client/*.js" ]
-  , "browsers":
-    { "chrome": [ "23", "canary" ]
-    , "firefox": [ "17", "nightly" ]
-    , "safari": [ "5.1" ]
-    , "ie": [ "10" ]
-    , "opera": [ "12", "next" ]
-    }
-  }
-, "repository":
-  { "type": "git"
-  , "url": "git://github.com/#{gh_author}#/#{name}#.git"
+{
+  "name": "#{name}#",
+  "version": "0.0.1",
+  "author": "#{author}#",
+  "license": "ISC",
+  "keywords": [
+    "#{name}#"
+  ],
+  "main": "index.js",
+  "bin": "./cli.js",
+  "scripts": {
+    "test": "for f in ./t/*.js; do node $f; done",
+    "start": "node cli.js",
+    "dev": "webpack-dev-server",
+    "deploy": "NODE_ENV=production; webpack; surge ./public"
+  },
+  "dependencies": {
+    "config-chain": "*",
+    "create-reducer": "*",
+    "domready": "*",
+    "ecstatic": "*",
+    "es6-promise": "*",
+    "jsnox": "*",
+    "nee": "*",
+    "optimist": "*",
+    "ramrod": "*",
+    "react": "^0.14.0-rc1",
+    "react-redux": "*",
+    "react-router": "*",
+    "redux": "*",
+    "redux-router": "*",
+    "redux-thunk": "^1.0.0",
+    "universal-reduce": "*",
+    "whatwg-fetch": "*"
+  },
+  "devDependencies": {
+    "tape": "*",
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babelify": "*",
+    "node-libs-browser": "*",
+    "surge": "*",
+    "webpack": "*",
+    "webpack-dev-server": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/#{gh_author}#/#{name}#.git"
   }
 }
