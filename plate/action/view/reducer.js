@@ -3,7 +3,8 @@ var reduce = require('universal-reduce')
 var register = require('../index')
 
 var actionHandlers = {
-  url
+  url,
+  windowSize
 }
 
 module.exports = createReducer(actionHandlers, init)
@@ -11,11 +12,20 @@ module.exports = createReducer(actionHandlers, init)
 Object.keys(actionHandlers).forEach(function (name) { register(name, 'view') })
 
 function url (state, action) {
-  return combine(state, action.payload)
+  return combine(state, { url: action.payload.url })
+}
+
+function windowSize (state, action) {
+  var { innerHeight, innerWidth } = action.payload
+  return combine(state, {innerHeight, innerWidth})
 }
 
 function init () {
-  return { url: '/' }
+  return {
+    url: '/',
+    innerHeight: window.innerHeight,
+    innerWidth: window.innerWidth
+  }
 }
 
 function combine () {
