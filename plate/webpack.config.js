@@ -16,8 +16,9 @@ module.exports = {
   },
   resolve: {
     alias: {
-      config: path.join(__dirname, 'config', (process.env.NODE_ENV || 'development') + '.js')
-    }
+      config$: path.join(__dirname, 'config', (process.env.NODE_ENV || 'development') + '.js')
+    },
+    root: [ __dirname ]
   },
   devServer: {
     contentBase: './public',

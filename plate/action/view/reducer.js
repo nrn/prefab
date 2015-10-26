@@ -1,11 +1,14 @@
 var createReducer = require('create-reducer')
 var reduce = require('universal-reduce')
+var register = require('../index')
 
-module.exports = {
-  reducer: createReducer({
-    url
-  }, init)
+var actionHandlers = {
+  url
 }
+
+module.exports = createReducer(actionHandlers, init)
+
+Object.keys(actionHandlers).forEach(function (name) { register(name, 'view') })
 
 function url (state, action) {
   return combine(state, action.payload)
@@ -23,3 +26,4 @@ function combine () {
     }, all)
   }, {})
 }
+
