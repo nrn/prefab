@@ -4,8 +4,8 @@ var { render } = require('react-dom')
 var domready = require('domready')
 var { Provider } = require('react-redux')
 
-var router = require('component/router')
-var store = require('action/store')
+var router = require('./component/router')
+var store = require('./action/store')
 
 domready(start)
 

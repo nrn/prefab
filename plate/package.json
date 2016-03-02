@@ -22,7 +22,7 @@
     "es6-promise": "*",
     "jsnox": "*",
     "nee": "*",
-    "optimist": "*",
+    "minimist": "*",
     "ramrod": "*",
     "react": "^0.14.0-rc1",
     "react-dom": "^0.14.0-rc1",

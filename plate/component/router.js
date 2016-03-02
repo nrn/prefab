@@ -2,8 +2,8 @@ var react = require('react')
 var d = require('jsnox')(react)
 var { IndexRoute, Route, Router } = require('react-router')
 
-var nav = require('component/nav')
-var home = require('component/page-home')
+var nav = require('./nav')
+var home = require('./page-home')
 
 module.exports = main
 
